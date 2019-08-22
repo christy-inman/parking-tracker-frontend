@@ -7,6 +7,7 @@ export default function App() {
   return (
     <React.Fragment>
       <NavBar />
+      {/* <HomePage /> */}
     </React.Fragment>
   );
 }

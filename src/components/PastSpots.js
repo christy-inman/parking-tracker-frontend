@@ -9,7 +9,9 @@ export default function PastSpots(props) {
     return (
         <React.Fragment>
             <h1>Past Spots</h1>
-            {spots}
+            <main className='spots-container'>
+                {spots}
+            </main>
         </React.Fragment>
     )
 }
