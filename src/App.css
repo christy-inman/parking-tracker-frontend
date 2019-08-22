@@ -1,9 +1,9 @@
 .parking-spot-card {
   display: flex;
   flex-direction: column;
-  padding: 3.6rem;
+  padding: 6rem;
   margin: 1.5rem;
-  border-radius: 30rem;;
+  border-radius: 50rem;;
   background-color: indigo;
   color: azure;
   text-align: center;
