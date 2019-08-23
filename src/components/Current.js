@@ -1,13 +1,12 @@
 import React from 'react'
 import Card from './Card'
 
-export default function MainContainer(props) {
+export default function Current(props) {
     const currentSpot = props.spots[props.spots.length - 1]
-    console.log("LAST", currentSpot)
     return (
         <React.Fragment>
             <h1>Current Spot</h1>
-            <Card spot={currentSpot} />
+            <Card spot={currentSpot} addFavorite={props.addFavorite}/>
         </React.Fragment>
     )
 }

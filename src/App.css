@@ -3,15 +3,20 @@
   flex-direction: column;
   padding: 6rem;
   margin: 1.5rem;
-  border-radius: 50rem;;
+  border-radius: 30rem;
   background-color: indigo;
   color: azure;
   text-align: center;
+  max-width: 330px;
 }
 
 .spots-container {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+
+.login-form {
+  width: 300px;
 }
 
 .new-spot-form, .login-form {
@@ -27,5 +32,24 @@
 
 h1 {
   color: indigo;
-  margin: 1.5rem;
+  margin: 2.5rem 1.5rem;
+}
+
+.link {
+  text-decoration: none;
+  border: .5px solid indigo;
+  padding: 1rem;
+  margin:.5rem;
+}
+
+* {
+  margin: 1rem;
+}
+
+input {
+  padding: 1rem;
+}
+button {
+  padding: 1rem;
+  font-size: 1rem;
 }

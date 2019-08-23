@@ -1,4 +1,5 @@
 import React from 'react'
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 export default function NotFound() {
     return (
@@ -11,9 +12,9 @@ export default function NotFound() {
                 Let's get you back on the right road.
                 Choose your next route below.
             </p>
-            <button>Return Home</button>
-            <button>See Current Parking Spot</button>
-            <button>Save a New Parking Spot</button>
+            <Link className='link' to='/'>Return Home</Link>
+            <Link className='link' to='/current/'>See Current Parking Spot</Link>
+            <Link className='link' to='/new/'>Save a New Parking Spot</Link>
         </React.Fragment>
     )
 }

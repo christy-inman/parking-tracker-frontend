@@ -1,7 +1,12 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export default function New(props) {
-    const handleSubmitNewSpot = (event) => {
+export default class NewForm extends Component {
+    state = {
+        cross_streets: '',
+        day: '',
+        notes: ''
+    }
+    handleSubmitNewSpot = (event) => {
         event.preventDefault()
         // console.log(form[0].value)
         const form = event.target
@@ -10,12 +15,12 @@ export default function New(props) {
             day: form[1].value,
             notes: form[2].value
         }
-        props.addNewSpot(newSpot)
+        console.log(newSpot)
+        this.props.addNewSpot(newSpot)
     }
-    return (
-        <React.Fragment>
-            <h1>New Spot</h1>
-            <form className='new-spot-form' onSubmit={handleSubmitNewSpot} >
+    render(){
+        return (
+            <form className='new-spot-form' onSubmit={this.handleSubmitNewSpot} >
                 <label for='cross-streets-input' className='label'>Cross Streets:</label>
                 <input required 
                     type='text' 
@@ -34,6 +39,6 @@ export default function New(props) {
                 />
                 <input type='submit' value='Save New Parking Spot' />
             </form>
-        </React.Fragment>
-    )
+        )
+    }
 }
