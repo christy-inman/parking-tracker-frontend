@@ -6,7 +6,11 @@ export default function Current(props) {
     return (
         <React.Fragment>
             <h1>Current Spot</h1>
-            <Card spot={currentSpot} addFavorite={props.addFavorite}/>
+            <Card 
+                spot={currentSpot} 
+                addFavorite={props.addFavorite}
+                deleteSpot={props.deleteSpot}
+            />
         </React.Fragment>
     )
 }

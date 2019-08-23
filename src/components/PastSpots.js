@@ -3,7 +3,11 @@ import Card from './Card'
 
 export default function PastSpots(props) {
     const spots = props.spots.map(spot => {
-        return <Card key={spot.id} spot={spot} addFavorite={props.addFavorite}/>
+        return <Card key={spot.id} 
+                    spot={spot} 
+                    addFavorite={props.addFavorite}
+                    deleteSpot={props.deleteSpot}
+                />
     })
     return (
         <React.Fragment>

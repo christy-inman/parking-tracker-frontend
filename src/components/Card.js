@@ -8,7 +8,7 @@ export default function Card(props) {
         return this
     }
     const parseDate = () => {
-        const date = props.spot.day
+        const date = spot.day
         const parsedDate = date.split('T')
         const day = parsedDate[0].split('-').move(0,3).join('/')
         return day
@@ -16,13 +16,16 @@ export default function Card(props) {
     const handleFavoriteClick = () => {
         props.addFavorite(spot)
     }
+    const handleDeleteClick = () => {
+        props.deleteSpot(spot)
+    }
     return (
         <div className='parking-spot-card'>
-            <h2>{props.spot.cross_streets}</h2>
+            <h2>{spot.cross_streets}</h2>
             <p>{parseDate()}</p>
-            <p>{props.spot.notes}</p>
+            <p>{spot.notes}</p>
             <button onClick={handleFavoriteClick}>Add to Favorite Spots</button>
-            <button>Delete This Spot</button>
+            <button onClick={handleDeleteClick}>Delete This Spot</button>
         </div>
     )
 }

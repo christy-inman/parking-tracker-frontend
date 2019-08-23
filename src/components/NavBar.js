@@ -17,7 +17,7 @@ export default class NavBar extends Component {
     } 
 
     componentDidMount() {
-        fetch(spotURL)
+        fetch('http://localhost:3000/')
             .then(response => response.json())
             .then(response => this.setState({
                 spots: response
@@ -25,14 +25,20 @@ export default class NavBar extends Component {
     }
 
     addNewSpot = (newSpot) => {
-        console.log("I MADE IT!", newSpot)
         fetch('http://localhost:3000/', {
             method: 'POST',
-            body: JSON.stringify(newSpot),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newSpot)
         }).then(response => response.json())
+    }
+
+    deleteSpot = (spot) => {
+        fetch('http://localhost:3000/', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(spot)
+        }).then(response => response.json())
+            .then(response => console.log(response))
     }
 
     addFavorite = spot => {
@@ -58,16 +64,28 @@ export default class NavBar extends Component {
             </nav>
             <Switch>
                 <Route exact path='/new/' render={props => {
-                    return <New addNewSpot={this.addNewSpot} />
+                    return <New 
+                                addNewSpot={this.addNewSpot} 
+                            />
                 }} />
                 <Route path='/current/' render={props => {
-                    return <Current spots={this.state.spots} addFavorite={this.addFavorite}/>
+                    return <Current 
+                                spots={this.state.spots} 
+                                addFavorite={this.addFavorite}
+                                deleteSpot={this.deleteSpot}
+                            />
                 }} />
                 <Route path='/past/' render={props => {
-                        return <Past spots={this.state.spots} addFavorite={this.addFavorite}/>
-                    }} />
+                    return <Past 
+                                spots={this.state.spots} 
+                                addFavorite={this.addFavorite}
+                                deleteSpot={this.deleteSpot}
+                            />
+                }} />
                 <Route path='/favorites/' render={props => {
-                    return <Favorites favorites={this.state.favorites} />
+                    return <Favorites 
+                                favorites={this.state.favorites} 
+                            />
                 }} />
                 <Route path='/login/' component={Login} />
                 <Route exact path='/' component={Home} />
