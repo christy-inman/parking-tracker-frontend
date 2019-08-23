@@ -7,13 +7,15 @@ import Past from './PastSpots'
 import Favorites from './Favorites'
 import NotFound from './NotFound'
 import Home from './Home'
+import Update from './UpdateForm'
 
 const spotURL = 'https://parking-tracker-backend.herokuapp.com/'
 
 export default class NavBar extends Component {
     state = {
         spots: [],
-        favorites: []
+        favorites: [],
+        spot: []
     } 
 
     componentDidMount() {
@@ -32,13 +34,19 @@ export default class NavBar extends Component {
         }).then(response => response.json())
     }
 
-    deleteSpot = (spot) => {
-        fetch('http://localhost:3000/', {
+    updateSpot = (id, updatedSpot) => {
+        fetch(`http://localhost:3000/${id}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(updatedSpot)
+        }).then(response => response.json())
+    }
+
+    deleteSpot = (id) => {
+        fetch(`http://localhost:3000/${id}`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(spot)
         }).then(response => response.json())
-            .then(response => console.log(response))
     }
 
     addFavorite = spot => {
@@ -51,7 +59,12 @@ export default class NavBar extends Component {
         // }
     }
 
+    populateUpdateForm = spot => {
+        this.setState({spot})
+    }
+
     render() {
+        console.log(this.state)
         return (
         <Router>
             <nav className='nav-bar'>
@@ -60,7 +73,7 @@ export default class NavBar extends Component {
                 <Link className='link' to='/favorites/'>Favorite Spots</Link>
                 <Link className='link' to='/past/'>Past Spots</Link>
                 <Link className='link' to='/login/'>Login</Link>
-                <Link className='link' to='/'>Home Logo</Link>
+                <Link className='link' to='/'>Little House</Link>
             </nav>
             <Switch>
                 <Route exact path='/new/' render={props => {
@@ -72,6 +85,8 @@ export default class NavBar extends Component {
                     return <Current 
                                 spots={this.state.spots} 
                                 addFavorite={this.addFavorite}
+                                populateUpdateForm={this.populateUpdateForm}
+                                updateSpot={this.updateSpot}
                                 deleteSpot={this.deleteSpot}
                             />
                 }} />
@@ -79,12 +94,20 @@ export default class NavBar extends Component {
                     return <Past 
                                 spots={this.state.spots} 
                                 addFavorite={this.addFavorite}
+                                populateUpdateForm={this.populateUpdateForm}
+                                updateSpot={this.updateSpot}
                                 deleteSpot={this.deleteSpot}
                             />
                 }} />
                 <Route path='/favorites/' render={props => {
                     return <Favorites 
                                 favorites={this.state.favorites} 
+                            />
+                }} />
+                <Route path='/update/' render= {props => {
+                    return <Update 
+                                updateSpot={this.updateSpot}
+                                spot={this.state.spot}
                             />
                 }} />
                 <Route path='/login/' component={Login} />

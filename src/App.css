@@ -10,6 +10,12 @@
   max-width: 330px;
 }
 
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
 .spots-container {
   display: flex;
   flex-direction: column-reverse;
@@ -19,7 +25,7 @@
   width: 300px;
 }
 
-.new-spot-form, .login-form {
+.new-spot-form, .login-form, .update-spot-form {
   display: flex;
   flex-direction: column;
   max-width: 450px; 
@@ -42,17 +48,34 @@ h1 {
   margin:.5rem;
 }
 
+.update {
+  text-decoration: none;
+  background-color: whitesmoke;
+  padding: .5rem;
+  margin:.5rem;
+  font-size: 1rem;
+}
+
 * {
   margin: 1rem;
 }
-
 input {
   padding: 1rem;
+  margin: .5rem;
 }
 button {
-  padding: 1rem;
+  padding: .5rem;
+  margin: .5rem;
   font-size: 1rem;
+  color: indigo;
+  background-color: whitesmoke;
+  border: none;
+}
+.button {
+  padding: 2rem;
+  margin: .5rem;
+  font-size: 2rem;
 }
 .label {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }

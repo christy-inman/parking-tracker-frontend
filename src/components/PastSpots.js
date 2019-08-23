@@ -6,6 +6,8 @@ export default function PastSpots(props) {
         return <Card key={spot.id} 
                     spot={spot} 
                     addFavorite={props.addFavorite}
+                    populateUpdateForm={props.populateUpdateForm}
+                    updateSpot={props.updateSpot}
                     deleteSpot={props.deleteSpot}
                 />
     })

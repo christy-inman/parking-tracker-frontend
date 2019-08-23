@@ -9,6 +9,8 @@ export default function Current(props) {
             <Card 
                 spot={currentSpot} 
                 addFavorite={props.addFavorite}
+                populateUpdateForm={props.populateUpdateForm}
+                updateSpot={props.updateSpot}
                 deleteSpot={props.deleteSpot}
             />
         </React.Fragment>
