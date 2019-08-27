@@ -18,17 +18,10 @@ export default function Card(props) {
         props.addFavorite(spot)
     }
     const handleUpdateClick = () => {
-        // const spotInfo = {
-        //     cross_streets: `${spot.cross_streets}`,
-        //     day: `${spot.day}`,
-        //     notes: `${spot.notes}`
-        // }
-        console.log('step 1', spot)
         props.populateUpdateForm(spot)
     }
     const handleDeleteClick = () => {
         props.deleteSpot(spot.id)
-        window.location.reload()
     }
     return (
         <div className='parking-spot-card'>

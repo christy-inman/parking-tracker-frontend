@@ -3,7 +3,6 @@ import React from 'react'
 export default function New(props) {
     const handleSubmitNewSpot = (event) => {
         event.preventDefault()
-        // console.log(form[0].value)
         const form = event.target
         const newSpot = {
             cross_streets: form[0].value,
@@ -11,7 +10,7 @@ export default function New(props) {
             notes: form[2].value
         }
         props.addNewSpot(newSpot)
-        window.location.reload()
+        form.reset()
     }
     return (
         <React.Fragment>

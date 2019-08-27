@@ -4,7 +4,6 @@ export default function UpdateForm(props) {
     const handleSubmitUpdateSpot = (event) => {
         event.preventDefault()
         const id = props.spot.id
-        // console.log(form[0].value)
         const form = event.target
         const updatedSpot = {
             cross_streets: form[0].value,
@@ -13,7 +12,7 @@ export default function UpdateForm(props) {
         }
         console.log(updatedSpot)
         props.updateSpot(id, updatedSpot)
-        window.location.reload()
+        form.reset()
     }
     return (
         <React.Fragment>

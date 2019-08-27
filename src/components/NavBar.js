@@ -16,37 +16,53 @@ export default class NavBar extends Component {
         spots: [],
         favorites: [],
         spot: []
-    } 
+    }
 
-    componentDidMount() {
-        fetch('http://localhost:3000/')
+    getSpots = () => {
+        fetch(spotURL)
             .then(response => response.json())
             .then(response => this.setState({
                 spots: response
             }))
+            .catch(error => console.log(error))
+    }
+
+    componentDidMount() {
+       this.getSpots()
     }
 
     addNewSpot = (newSpot) => {
-        fetch('http://localhost:3000/', {
+        fetch(spotURL, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newSpot)
-        }).then(response => response.json())
+        })
+            .then(response => {
+                console.log(response.json())
+            })
+            .then(this.getSpots)
+            .catch(error => console.log(error))
     }
 
     updateSpot = (id, updatedSpot) => {
-        fetch(`http://localhost:3000/${id}`, {
+        fetch(spotURL + `${id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(updatedSpot)
-        }).then(response => response.json())
+        })
+            .then(response => response.json())
+            .then(this.getSpots)
+            .catch(error => console.log(error))
     }
 
     deleteSpot = (id) => {
-        fetch(`http://localhost:3000/${id}`, {
+        fetch(spotURL + `${id}`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
-        }).then(response => response.json())
+        })
+            .then(response => response.json())
+            .then(this.getSpots)
+            .catch(error => console.log(error))
     }
 
     addFavorite = spot => {
@@ -64,7 +80,6 @@ export default class NavBar extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
         <Router>
             <nav className='nav-bar'>
