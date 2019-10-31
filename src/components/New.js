@@ -30,7 +30,7 @@ export default function New(props) {
                     type='textfield' 
                     name='note-input' 
                     className='input' 
-                    placeholder='Add any addtional notes to remind you where you left your transportation'
+                    placeholder='Add any additional notes to remind you where you left your transportation'
                 />
                 <input type='submit' value='Save New Parking Spot' className='button' />
             </form>
